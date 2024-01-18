@@ -31,3 +31,27 @@ const words = [
     {"fr": "la", "en": "the"},
     {"fr": "de", "en": "of"},
   ]
+  // shuffle the array? 
+
+  document.addEventListener("DOMContentLoaded", function() {
+    let buttons = document.getElementsByTagName("button");
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function() {
+            console.log("mouse click");
+        });
+    }
+
+    document.getElementById("input-name").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            console.log("enter1 click");
+        }
+    });
+
+    document.getElementById("input-word").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            console.log("enter2 click");
+        }
+    });
+});
+

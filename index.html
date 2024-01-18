@@ -22,26 +22,29 @@
   <!-- Main content -->
   <main>
 
-    <!-- Hero section -->
+    <!-- Intro section -->
     <section id="intro" class="hide">
       <div id="intro-div">
-        <h1>1
+        <h1 id="intro-heading">Welcome to learning french by memorizing 1000 of the most common words
         </h1>
-        <button class="button"><h3>Enter Game</h3></button>
+        <label for="input-name">Enter your name:</label>
+        <input class="user-input" id="input-name" type="text" required>
+        <button id="start-game" class="button"><h3>Start Game</h3></button>
       </div>
     </section>
 
+    <!-- Game section -->
     <section id="game" class="hide">
       <div id="intro-div">
-        <h1>2
-        </h1>
+        <h1>${} you have ${} word${} right</h1>
         <div class="flashcard"><h2>Word</h2></div>
-        <input id="input-word" type="text" required>
+        <input class="user-input" id="input-word" type="text" required>
         <button class="button"><h3>Submit</h3></button>
         <button class="button"><h3>Exit game</h3></button>
       </div>
     </section>
 
+    <!-- Results section -->
     <section id="score" class="hide">
       <div id="intro-div">
         <h1>Well done ${}!
