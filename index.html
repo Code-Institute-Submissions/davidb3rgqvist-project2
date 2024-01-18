@@ -17,18 +17,16 @@
   <!-- Meta Tags for SEO -->
   <meta name="description" content="Learn the 1000 most common french words in a fun game.">
   <meta name="keywords" content="Most common french words, simple fun webgame">
-</head>
-<body>   
-  <!-- Main content -->
-  <main>
+  </head>
+  <body>   
 
     <!-- Intro section -->
-    <section id="intro" class="hide">
+    <section id="intro">
       <div id="intro-div">
         <h1 id="intro-heading">Welcome to learning french by memorizing 1000 of the most common words
         </h1>
-        <label for="input-name">Enter your name:</label>
-        <input class="user-input" id="input-name" type="text" required>
+        <label for="userInput">Enter your name:</label>
+        <input class="user-input" id="user-name" type="text" required>
         <button id="start-game" class="button"><h3>Start Game</h3></button>
       </div>
     </section>
@@ -36,11 +34,11 @@
     <!-- Game section -->
     <section id="game" class="hide">
       <div id="intro-div">
-        <h1>${} you have ${} word${} right</h1>
+        <h1 id="outputHeading">Let's go <span id="user-heading"></span>!</h1>
         <div class="flashcard"><h2>Word</h2></div>
         <input class="user-input" id="input-word" type="text" required>
         <button class="button"><h3>Submit</h3></button>
-        <button class="button"><h3>Exit game</h3></button>
+        <button id="exit-game" class="button"><h3>Exit game</h3></button>
       </div>
     </section>
 
@@ -50,7 +48,7 @@
         <h1>Well done ${}!
         </h1>
         <p>Your latest score was: </p>
-        <button class="button"><h3>Play again</h3></button>
+        <button id="play-again" class="button"><h3>Play again</h3></button>
       </div>
     </section>
 
