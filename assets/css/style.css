@@ -1,0 +1,85 @@
+/* Google fonts import */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&display=swap');
+
+/* General rules */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+    color: #393E40;
+}
+
+#input-word {
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    font-size: large;
+    font-weight: bold;  
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.button {
+    padding: 10px;
+    width: 300px;
+    margin-bottom: 10px;
+    background-color: #00123c;
+    color: #f1f2f2;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #2e2b40;
+    color: #f1f2f2;
+    border: 1px solid #E7EDEB;
+}
+
+h3  {
+    color: #f1f2f2;
+}
+
+/* Main page */
+body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 70px;
+    background-image: url('../images/frenchbackground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Section: intro, game area and personal scoreboard */
+section {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 360px;
+    height: 600px;
+    text-align: center;
+    padding: 50px 30px;
+    border: 1px solid #000000;
+    box-shadow: #393E40;
+    background-image: url('../images/sectionbacground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+
+/* Falshcard, main game component */
+
+.flashcard {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000000;
+    background-color: antiquewhite;
+    border-radius: 10px;
+}
+
