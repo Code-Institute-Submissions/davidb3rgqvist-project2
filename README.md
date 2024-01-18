@@ -1,4 +1,4 @@
-# Free Gym Locator
+# Learn french with flashcards
 
 Welcome to "Free Gym Locator," a website dedicated to helping users discover and explore outdoor fitness options across Sweden. Our mission is to provide a comprehensive resource for outdoor gym enthusiasts, promoting a healthy lifestyle and community engagement.
 
