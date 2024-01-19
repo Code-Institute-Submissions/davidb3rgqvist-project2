@@ -99,19 +99,11 @@ section {
     display: none;
 }
 
-/*
-.show {
-    display: flex;
+#wrong-answer {
+    display: none;
 }
-  
 
-  
-.correct {
-    background-color: rgb(27, 225, 116);
-    color: #f1f2f2;
-}
-  
-.incorrect {
-    background-color: rgb(225, 27, 27);
-    color: #f1f2f2;
+#play-again {
+    display: none;
+    margin-top: 10px;
 }

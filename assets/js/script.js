@@ -118,18 +118,64 @@ document.addEventListener("DOMContentLoaded", function() {
     flashcardElement.style.fontWeight = "bold";
   }
 
+  function resetGame() {
+    currentWordIndex = 0;
+    displayWord();
+    showGameSection();
+    document.getElementById("input-word").style.display = "block";
+    document.getElementById("play-again").style.display = "none";
+    document.getElementById("wrong-answer").style.display = "none";
+    flashcardElement.style.color = "#393E40";
+    flashcardElement.style.backgroundColor = "rgb(241, 236, 230";
+}
+
+
   function checkAnswer() {
     const userInputElement = document.getElementById("input-word");
+    const flashcardElement = document.getElementById("flashcard");
+    const wrongAnswerDiv = document.getElementById("wrong-answer");
+    const submitButton = document.getElementById("user-answer");
+    const playAgainButton = document.getElementById("play-again");
+
 
     if (userInputElement.value.toLowerCase() === shuffledWords[currentWordIndex].fr.toLowerCase()) {
       // Correct answer, move to the next word
       currentWordIndex++;
       displayWord();
       userInputElement.value = "";
+      wrongAnswerDiv.style.display = "none";
+      submitButton.style.display = "block";
+      playAgainButton.style.display = "none";
     } else {
-      alert("Incorrect answer! Try again.");
+        // Incorrect answer, show wrong answer message and reveal the French word
+        wrongAnswerDiv.style.display = "block"; // Show the wrong answer message
+        flashcardElement.textContent = "Correct word is: " + shuffledWords[currentWordIndex].fr;
+        flashcardElement.style.color = "#f1f2f2";
+        flashcardElement.style.backgroundColor = "rgb(197, 21, 21";
+        userInputElement.style.display = "none";
+        submitButton.style.display = "none";
+        playAgainButton.style.display = "block";
     }
   }
+     // Add event listener for the "Submit" button
+            document.getElementById("user-answer").addEventListener("click", function() {
+                checkAnswer();
+            });
+
+            // Add event listener for the "Play Again" button
+            document.getElementById("play-again").addEventListener("click", function() {
+                // Reset the game and show the Submit button
+                currentWordIndex = 0;
+                displayWord();
+                showGameSection();
+                document.getElementById("user-answer").style.display = "block";
+                document.getElementById("play-again").style.display = "none";
+                playAgainButton.addEventListener("click", function() {
+                    resetGame();
+                });
+            });
+        });
+
   document.getElementById("input-word").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
       checkAnswer();
@@ -142,4 +188,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Initial setup
   showIntroSection();
-});
