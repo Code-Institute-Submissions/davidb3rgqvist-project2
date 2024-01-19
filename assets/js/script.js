@@ -58,11 +58,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   playAgainButton.addEventListener("click", function() {
     showGameSection();
-    displayWord();
   });
 
   restartGameButton.addEventListener("click", function() {
-    showIntroSection();
+    showGameSection();
   });
 
   // Game
@@ -70,8 +69,35 @@ document.addEventListener("DOMContentLoaded", function() {
   const words = [
     {"fr": "comme", "en": "as"},
     {"fr": "je", "en": "I"},
-    // Add other word pairs as needed
-  ];
+    {"fr": "son", "en": "his"},
+    {"fr": "que", "en": "that"},
+    {"fr": "il", "en": "il"},
+    {"fr": "était", "en": "was"},
+    {"fr": "pour", "en": "for"},
+    {"fr": "sur", "en": "on"},
+    {"fr": "sont", "en": "are"},
+    {"fr": "avec", "en": "with"},
+    {"fr": "ils", "en": "they"},
+    {"fr": "être", "en": "be"},
+    {"fr": "à", "en": "at"},
+    {"fr": "un", "en": "one"},
+    {"fr": "avoir", "en": "have"},
+    {"fr": "à partir de", "en": "from"},
+    {"fr": "par", "en": "by"},
+    {"fr": "chaud", "en": "hot"},
+    {"fr": "mot", "en": "word"},
+    {"fr": "mais", "en": "but"},
+    {"fr": "que", "en": "what"},
+    {"fr": "certains", "en": "some"},
+    {"fr": "est", "en": "is"},
+    {"fr": "il", "en": "it"},
+    {"fr": "vous", "en": "you"},
+    {"fr": "ou", "en": "or"},   
+    {"fr": "eu", "en": "had"},
+    {"fr": "la", "en": "the"},
+    {"fr": "de", "en": "of"},
+  ]
+;
 
   function shuffleWords(words) {
     for (let i = words.length - 1; i > 0; i--) {
@@ -88,6 +114,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function displayWord() {
     const flashcardElement = document.getElementById("flashcard");
     flashcardElement.textContent = shuffledWords[currentWordIndex].en;
+    flashcardElement.style.fontSize = "30px";
+    flashcardElement.style.fontWeight = "bold";
   }
 
   function checkAnswer() {
@@ -97,19 +125,19 @@ document.addEventListener("DOMContentLoaded", function() {
       // Correct answer, move to the next word
       currentWordIndex++;
       displayWord();
-      userInputElement.value = ""; // Clear the input
+      userInputElement.value = "";
     } else {
-      // Incorrect answer, handle accordingly
-      // For now, you can show an alert or perform any other action
       alert("Incorrect answer! Try again.");
     }
   }
-
-  // Add event listener for "Enter" key press
   document.getElementById("input-word").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
       checkAnswer();
     }
+  });
+
+  document.getElementById("user-answer").addEventListener("click", function() {
+    checkAnswer();
   });
 
   // Initial setup
