@@ -105,7 +105,7 @@ Moving forward, these suggested steps aim to elevate the Free Gym Locator websit
 
 ## Deployment
 
-[Deployed page](https://davidb3rgqvist.github.io/project1/)
+[Deployed page](https://davidb3rgqvist.github.io/project2/)
 The deployment process involved leveraging GitHub Pages, an integrated service provided by GitHub, to publish the website directly from the project's repository. Here are the steps for deployment:
 
 1. **GitHub Repository:** The Free Gym Locator's codebase resides in a GitHub repository. - [Repository](https://github.com/davidb3rgqvist/project1/tree/main)

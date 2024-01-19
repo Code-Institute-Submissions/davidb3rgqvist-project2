@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const userNameElement = document.getElementById("user-name");
   const userNameDisplayElement = document.getElementById("user-heading");
   const startButton = document.getElementById("start-game");
+  const userInputElement = document.getElementById("input-word");
 
   startButton.addEventListener("click", function() {
     const userNameValue = userNameElement.value;
@@ -16,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (event.key === "Enter") {
       const userNameValue = userNameElement.value;
       userNameDisplayElement.textContent = userNameValue;
-      userNameElement.value = "";
       showGameSection();
       displayWord();
     }
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     introSection.classList.add("hide");
     gameSection.classList.remove("hide");
     scoreSection.classList.add("hide");
+    userInputElement.focus();
   }
 
   // Show score-section and hide others
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   playAgainButton.addEventListener("click", function() {
+    userInputElement.focus();
     showGameSection();
   });
 
@@ -111,6 +113,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   let currentWordIndex = 0;
 
+  let consecutiveCorrectAnswers = 0;
+
   function displayWord() {
     const flashcardElement = document.getElementById("flashcard");
     flashcardElement.textContent = shuffledWords[currentWordIndex].en;
@@ -118,21 +122,61 @@ document.addEventListener("DOMContentLoaded", function() {
     flashcardElement.style.fontWeight = "bold";
     flashcardElement.style.color = "#393E40";
     flashcardElement.style.backgroundColor = "rgb(241, 236, 230)";
+    userInputElement.focus();
   }
-  
-  const userInputElement = document.getElementById("input-word");
+  document.getElementById("input-word").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      checkAnswer();
+    }
+  });
 
+  document.getElementById("user-answer").addEventListener("click", function() {
+    checkAnswer();
+  });
+  
   function resetGame() {
     currentWordIndex = 0;
     displayWord();
     showGameSection();
+    userInputElement.focus();
     document.getElementById("input-word").style.display = "block";
+    document.getElementById("user-answer").style.display = "block";
     document.getElementById("play-again").style.display = "none";
     document.getElementById("wrong-answer").style.display = "none";
     userInputElement.value = "";
-
 }
+let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
+    function updateHighScores(score) {
+        // Add the new score to the high scores list
+        highScores.push(score);
+
+        // Sort the high scores in descending order
+        highScores.sort((a, b) => b - a);
+
+        // Keep only the top 10 scores
+        highScores = highScores.slice(0, 10);
+
+        // Save the high scores to localStorage
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+    }
+
+    function displayHighScores() {
+        // Display the top 10 high scores in the results section
+        const scoreSection = document.getElementById("score");
+        const highScoresList = document.createElement("ol");
+        highScoresList.id = "high-scores-list";
+
+        highScores.forEach((score, index) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `#${index + 1}: ${score} words in a row`;
+            highScoresList.appendChild(listItem);
+        });
+
+        // Add the high scores list to the results section
+        scoreSection.innerHTML = "<h1>High Scores</h1>";
+        scoreSection.appendChild(highScoresList);
+    }
 
   function checkAnswer() {
     const userInputElement = document.getElementById("input-word");
@@ -145,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (userInputElement.value.toLowerCase() === shuffledWords[currentWordIndex].fr.toLowerCase()) {
       // Correct answer, move to the next word
       currentWordIndex++;
+      consecutiveCorrectAnswers++;
       displayWord();
       userInputElement.value = "";
       wrongAnswerDiv.style.display = "none";
@@ -152,7 +197,8 @@ document.addEventListener("DOMContentLoaded", function() {
       playAgainButton.style.display = "none";
     } else {
         // Incorrect answer, show wrong answer message and reveal the French word
-        wrongAnswerDiv.style.display = "block"; // Show the wrong answer message
+        consecutiveCorrectAnswers = 0;
+        wrongAnswerDiv.style.display = "block";
         flashcardElement.textContent = "Correct word is: " + shuffledWords[currentWordIndex].fr;
         flashcardElement.style.color = "#f1f2f2";
         flashcardElement.style.backgroundColor = "rgb(197, 21, 21)";
@@ -163,40 +209,29 @@ document.addEventListener("DOMContentLoaded", function() {
         playAgainButton.addEventListener("click", function() {
             resetGame();
         });
+
+        // Update and display high scores
+        updateHighScores(consecutiveCorrectAnswers);
+        displayHighScores();
     }
-  }
-   
+    }
  
-  
-  //Add event listener for the "Submit" button
-            document.getElementById("user-answer").addEventListener("click", function() {
-                checkAnswer();
-            });
 
-            // Add event listener for the "Play Again" button
-            document.getElementById("play-again").addEventListener("click", function() {
-                // Reset the game and show the Submit button
-                currentWordIndex = 0;
-                displayWord();
-                showGameSection();
-                document.getElementById("user-answer").style.display = "block";
-                document.getElementById("play-again").style.display = "none";
-                flashcardElement.style.color = "#393E40";
-                flashcardElement.style.backgroundColor = "rgb(241, 236, 230)";
-                
-            });
-        });
+    document.getElementById("user-answer").addEventListener("click", function() {
+        checkAnswer();
+    });
+    
+    // Add event listener for the "Play Again" button
+    document.getElementById("play-again").addEventListener("click", function() {
+        // Reset the game and show the Submit button
+        resetGame();
+    });
+    
+    // Initial setup
+    showIntroSection();
 
 
-  document.getElementById("input-word").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-      checkAnswer();
-    }
-  });
 
-  document.getElementById("user-answer").addEventListener("click", function() {
-    checkAnswer();
-  });
+});
 
-  // Initial setup
-  showIntroSection();
+
