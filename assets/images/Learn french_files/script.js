@@ -116,11 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
     flashcardElement.textContent = shuffledWords[currentWordIndex].en;
     flashcardElement.style.fontSize = "30px";
     flashcardElement.style.fontWeight = "bold";
-    flashcardElement.style.color = "#393E40";
-    flashcardElement.style.backgroundColor = "rgb(241, 236, 230)";
   }
-  
-  const userInputElement = document.getElementById("input-word");
 
   function resetGame() {
     currentWordIndex = 0;
@@ -131,6 +127,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("wrong-answer").style.display = "none";
     userInputElement.value = "";
 
+    const flashcardElement = document.getElementById("flashcard");
+                flashcardElement.style.color = "black";
 }
 
 
@@ -155,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
         wrongAnswerDiv.style.display = "block"; // Show the wrong answer message
         flashcardElement.textContent = "Correct word is: " + shuffledWords[currentWordIndex].fr;
         flashcardElement.style.color = "#f1f2f2";
-        flashcardElement.style.backgroundColor = "rgb(197, 21, 21)";
+        flashcardElement.style.backgroundColor = "rgb(197, 21, 21";
         userInputElement.style.display = "none";
         submitButton.style.display = "none";
         playAgainButton.style.display = "block";
@@ -170,10 +168,11 @@ document.addEventListener("DOMContentLoaded", function() {
   
   //Add event listener for the "Submit" button
             document.getElementById("user-answer").addEventListener("click", function() {
+                document.getElementById("user-answer").style.display = "block";
                 checkAnswer();
             });
 
-            // Add event listener for the "Play Again" button
+           /* // Add event listener for the "Play Again" button
             document.getElementById("play-again").addEventListener("click", function() {
                 // Reset the game and show the Submit button
                 currentWordIndex = 0;
@@ -181,10 +180,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 showGameSection();
                 document.getElementById("user-answer").style.display = "block";
                 document.getElementById("play-again").style.display = "none";
-                flashcardElement.style.color = "#393E40";
-                flashcardElement.style.backgroundColor = "rgb(241, 236, 230)";
                 
-            });
+            });*/
         });
 
 
