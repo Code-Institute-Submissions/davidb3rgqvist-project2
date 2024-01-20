@@ -130,9 +130,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  document.getElementById("user-answer").addEventListener("click", function() {
+ /* document.getElementById("user-answer").addEventListener("click", function() {
     checkAnswer();
-  });
+  }); */
   
   function resetGame() {
     currentWordIndex = 0;
