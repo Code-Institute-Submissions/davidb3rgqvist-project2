@@ -109,7 +109,10 @@ section {
 }
 
 /* Score section */
+#high-scores-list {
+  font-weight: bold;
+}
 
 #back-to-game {
-    margin-top: 250px;
+   margin-bottom: 30px;
 }

@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const exitGameButton = document.getElementById("exit-game");
   const playAgainButton = document.getElementById("play-again");
-  const restartGameButton = document.getElementById("back-to-game");
+  const backToGameButton = document.getElementById("back-to-game");
 
   // Show intro-section and hide others
   function showIntroSection() {
@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   exitGameButton.addEventListener("click", function() {
     showScoreSection();
+    displayHighScores();
   });
 
   playAgainButton.addEventListener("click", function() {
@@ -62,9 +63,10 @@ document.addEventListener("DOMContentLoaded", function() {
     showGameSection();
   });
 
-  restartGameButton.addEventListener("click", function() {
+  backToGameButton.addEventListener("click", function() {
     showGameSection();
   });
+
 
   // Game
 
@@ -100,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {"fr": "de", "en": "of"},
   ]
 ;
+let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
   function shuffleWords(words) {
     for (let i = words.length - 1; i > 0; i--) {
@@ -112,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const shuffledWords = shuffleWords([...words]);
 
   let currentWordIndex = 0;
-
+  let totalCorrectAnswers = 0;
   let consecutiveCorrectAnswers = 0;
 
   function displayWord() {
@@ -137,38 +140,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("wrong-answer").style.display = "none";
     userInputElement.value = "";
 }
-let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-
-    function updateHighScores(score) {
-        // Add the new score to the high scores list
-        highScores.push(score);
-
-        // Sort the high scores in descending order
-        highScores.sort((a, b) => b - a);
-
-        // Keep only the top 10 scores
-        highScores = highScores.slice(0, 10);
-
-        // Save the high scores to localStorage
-        localStorage.setItem("highScores", JSON.stringify(highScores));
-    }
-
-    function displayHighScores() {
-        // Display the top 10 high scores in the results section
-        const scoreSection = document.getElementById("results");
-        const highScoresList = document.createElement("ol");
-        highScoresList.id = "high-scores-list";
-
-        highScores.forEach((score, index) => {
-            const listItem = document.createElement("li");
-            listItem.textContent = `#${index + 1}: ${score} words in a row`;
-            highScoresList.appendChild(listItem);
-        });
-
-        // Add the high scores list to the results section
-        scoreSection.innerHTML = "<h1>High Scores</h1>";
-        scoreSection.appendChild(highScoresList);
-    }
 
     function checkAnswer() {
       const userInputElement = document.getElementById("input-word");
@@ -182,6 +153,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
       // Correct answer, move to the next word
       currentWordIndex++;
       consecutiveCorrectAnswers++;
+      totalCorrectAnswers++;
       displayWord();
       userInputElement.value = "";
       wrongAnswerDiv.style.display = "none";
@@ -191,21 +163,54 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
         // Incorrect answer, show wrong answer message and reveal the French word
         consecutiveCorrectAnswers = 0;
         wrongAnswerDiv.style.display = "block";
-        flashcardElement.textContent = "Correct: " + shuffledWords[currentWordIndex].fr;
+        flashcardElement.textContent = "Correct word = " + shuffledWords[currentWordIndex].fr;
         flashcardElement.style.color = "#f1f2f2";
         flashcardElement.style.backgroundColor = "rgb(197, 21, 21)";
         userInputElement.style.display = "none";
         submitButton.style.display = "none";
         playAgainButton.style.display = "block";
         
+
         playAgainButton.addEventListener("click", function() {
             resetGame();
         });
-       
+
+
+        function updateHighScores(score) {
+            // Add the new score to the high scores list
+            highScores.push(score);
+    
+            // Sort the high scores in descending order
+            highScores.sort((a, b) => b - a);
+    
+            // Keep only the top 20 scores
+            highScores = highScores.slice(0, 20);
+    
+            // Save the high scores to localStorage
+            localStorage.setItem("highScores", JSON.stringify(highScores));
+        }
+    
+        function displayHighScores() {
+            // Display the top 20 high scores in the results section
+            const scoreSection = document.getElementById("results");
+            const highScoresList = document.createElement("ol");
+            highScoresList.id = "high-scores-list";
+    
+            highScores.forEach((score, index) => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `#${index + 1}: ${score} words in a row`;
+                highScoresList.appendChild(listItem);
+            });
+    
+            // Add the high scores list to the results section
+            scoreSection.innerHTML = "<h1>Your top 20 High Scores</h1>";
+            scoreSection.appendChild(highScoresList);
+        }
+        
         // Update and display high scores
-        updateHighScores(consecutiveCorrectAnswers);
+        updateHighScores(totalCorrectAnswers);
         displayHighScores();
-    }
+    } 
     }
  
 
@@ -226,10 +231,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
     });
     
     // Initial setup
-    showIntroSection();
-
-
-
+    showIntroSection()
 });
 
 
