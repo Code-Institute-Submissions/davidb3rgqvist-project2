@@ -202,12 +202,6 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
             resetGame();
         });
 
-        document.getElementById("input-word").addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                resetGame();
-            }
-          });
-
         // Update and display high scores
         updateHighScores(consecutiveCorrectAnswers);
         displayHighScores();
