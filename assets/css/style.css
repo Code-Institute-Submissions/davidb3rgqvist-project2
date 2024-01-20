@@ -107,6 +107,9 @@ section {
     display: none;
     margin-top: 10px;
 }
-.testing {
-    color: #000000;
+
+/* Score section */
+
+#back-to-game {
+    margin-top: 250px;
 }

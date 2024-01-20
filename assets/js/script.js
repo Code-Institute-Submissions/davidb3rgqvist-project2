@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const exitGameButton = document.getElementById("exit-game");
   const playAgainButton = document.getElementById("play-again");
-  const restartGameButton = document.getElementById("restart-game");
+  const restartGameButton = document.getElementById("back-to-game");
 
   // Show intro-section and hide others
   function showIntroSection() {
@@ -124,15 +124,7 @@ document.addEventListener("DOMContentLoaded", function() {
     flashcardElement.style.backgroundColor = "rgb(241, 236, 230)";
     userInputElement.focus();
   }
-  document.getElementById("input-word").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-      checkAnswer();
-    }
-  });
 
- /* document.getElementById("user-answer").addEventListener("click", function() {
-    checkAnswer();
-  }); */
   
   function resetGame() {
     currentWordIndex = 0;
@@ -163,7 +155,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
     function displayHighScores() {
         // Display the top 10 high scores in the results section
-        const scoreSection = document.getElementById("score");
+        const scoreSection = document.getElementById("results");
         const highScoresList = document.createElement("ol");
         highScoresList.id = "high-scores-list";
 
@@ -178,12 +170,12 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
         scoreSection.appendChild(highScoresList);
     }
 
-  function checkAnswer() {
-    const userInputElement = document.getElementById("input-word");
-    const flashcardElement = document.getElementById("flashcard");
-    const wrongAnswerDiv = document.getElementById("wrong-answer");
-    const submitButton = document.getElementById("user-answer");
-    const playAgainButton = document.getElementById("play-again");
+    function checkAnswer() {
+      const userInputElement = document.getElementById("input-word");
+      const flashcardElement = document.getElementById("flashcard");
+      const wrongAnswerDiv = document.getElementById("wrong-answer");
+      const submitButton = document.getElementById("user-answer");
+      const playAgainButton = document.getElementById("play-again");
 
 
     if (userInputElement.value.toLowerCase() === shuffledWords[currentWordIndex].fr.toLowerCase()) {
@@ -199,7 +191,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
         // Incorrect answer, show wrong answer message and reveal the French word
         consecutiveCorrectAnswers = 0;
         wrongAnswerDiv.style.display = "block";
-        flashcardElement.textContent = "Correct word is: " + shuffledWords[currentWordIndex].fr;
+        flashcardElement.textContent = "Correct: " + shuffledWords[currentWordIndex].fr;
         flashcardElement.style.color = "#f1f2f2";
         flashcardElement.style.backgroundColor = "rgb(197, 21, 21)";
         userInputElement.style.display = "none";
@@ -209,6 +201,12 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
         playAgainButton.addEventListener("click", function() {
             resetGame();
         });
+
+        document.getElementById("input-word").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                resetGame();
+            }
+          });
 
         // Update and display high scores
         updateHighScores(consecutiveCorrectAnswers);
@@ -220,6 +218,12 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
     document.getElementById("user-answer").addEventListener("click", function() {
         checkAnswer();
     });
+
+    document.getElementById("input-word").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+          checkAnswer();
+        }
+      });
     
     // Add event listener for the "Play Again" button
     document.getElementById("play-again").addEventListener("click", function() {
