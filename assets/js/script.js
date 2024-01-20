@@ -201,7 +201,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
         playAgainButton.addEventListener("click", function() {
             resetGame();
         });
-
+       
         // Update and display high scores
         updateHighScores(consecutiveCorrectAnswers);
         displayHighScores();
