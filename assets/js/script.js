@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const startButton = document.getElementById("start-game");
   const userInputElement = document.getElementById("input-word");
 
+  // Add event listener to the Start Game button
   startButton.addEventListener("click", function() {
     const userNameValue = userNameElement.value;
     userNameDisplayElement.textContent = userNameValue;
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     displayWord();
   });
 
+  // Add event listener to the username text field
   document.getElementById("user-name").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
       const userNameValue = userNameElement.value;
@@ -68,8 +70,9 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
 
-  // Game
+ // Game
 
+ // Array with the game words
   const words = [
     {"fr": "comme", "en": "as"},
     {"fr": "je", "en": "I"},
@@ -102,8 +105,10 @@ document.addEventListener("DOMContentLoaded", function() {
     {"fr": "de", "en": "of"},
   ]
 ;
+// Array with the high scores
 let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
+  // Shuffles the word to have a new "first" word every time the webpage reloads.
   function shuffleWords(words) {
     for (let i = words.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -114,6 +119,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
   const shuffledWords = shuffleWords([...words]);
 
+  // Add the word to the flashcard in the game
   let currentWordIndex = 0;
   let totalCorrectAnswers = 0;
   let consecutiveCorrectAnswers = 0;
@@ -128,7 +134,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
     userInputElement.focus();
   }
 
-  
+  // Reset the game
   function resetGame() {
     currentWordIndex = 0;
     displayWord();
@@ -140,7 +146,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
     document.getElementById("wrong-answer").style.display = "none";
     userInputElement.value = "";
 }
-
+    // Check if the user have inserted the correct word
     function checkAnswer() {
       const userInputElement = document.getElementById("input-word");
       const flashcardElement = document.getElementById("flashcard");
@@ -150,7 +156,6 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 
     if (userInputElement.value.toLowerCase() === shuffledWords[currentWordIndex].fr.toLowerCase()) {
-      // Correct answer, move to the next word
       currentWordIndex++;
       consecutiveCorrectAnswers++;
       totalCorrectAnswers++;
@@ -160,7 +165,6 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
       submitButton.style.display = "block";
       playAgainButton.style.display = "none";
     } else {
-        // Incorrect answer, show wrong answer message and reveal the French word
         consecutiveCorrectAnswers = 0;
         wrongAnswerDiv.style.display = "block";
         flashcardElement.textContent = "Correct word = " + shuffledWords[currentWordIndex].fr;
@@ -170,54 +174,47 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
         submitButton.style.display = "none";
         playAgainButton.style.display = "block";
         
-
         playAgainButton.addEventListener("click", function() {
             resetGame();
         });
 
-
+        // Gets the score and sends it to the scoreboard
         function updateHighScores(score) {
-            // Add the new score to the high scores list
             highScores.push(score);
-    
-            // Sort the high scores in descending order
             highScores.sort((a, b) => b - a);
-    
-            // Keep only the top 20 scores
             highScores = highScores.slice(0, 20);
-    
-            // Save the high scores to localStorage
             localStorage.setItem("highScores", JSON.stringify(highScores));
         }
     
         function displayHighScores() {
-            // Display the top 20 high scores in the results section
             const scoreSection = document.getElementById("results");
             const highScoresList = document.createElement("ol");
             highScoresList.id = "high-scores-list";
-    
-            highScores.forEach((score, index) => {
-                const listItem = document.createElement("li");
-                listItem.textContent = `#${index + 1}: ${score} words in a row`;
+              highScores.forEach((score, index) => {
+                const listItem = document.createElement("ol");
                 highScoresList.appendChild(listItem);
+                if (score !== undefined && score !== null) {
+                    const listItem = document.createElement("ol");
+                    listItem.textContent = `${score} words in a row`;
+                    highScoresList.appendChild(listItem);
+                }
             });
-    
-            // Add the high scores list to the results section
+
             scoreSection.innerHTML = "<h1>Your top 20 High Scores</h1>";
             scoreSection.appendChild(highScoresList);
         }
         
-        // Update and display high scores
         updateHighScores(totalCorrectAnswers);
         displayHighScores();
     } 
     }
  
-
+    // Add event listener for the "Submit" button
     document.getElementById("user-answer").addEventListener("click", function() {
         checkAnswer();
     });
 
+    // Add event listener for the "Text input"
     document.getElementById("input-word").addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
           checkAnswer();
@@ -226,7 +223,6 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
     
     // Add event listener for the "Play Again" button
     document.getElementById("play-again").addEventListener("click", function() {
-        // Reset the game and show the Submit button
         resetGame();
     });
     
