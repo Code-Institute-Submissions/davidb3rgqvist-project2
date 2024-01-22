@@ -221,7 +221,6 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
       speakButton.style.display= "none";
       updateCorrectAnswerCount(totalCorrectAnswers);
     } else {
-        speakWord(shuffledWords[currentWordIndex].fr);
         consecutiveCorrectAnswers = 0;
         speakButton.style.display= "block";
         wrongAnswerDiv.style.display = "block";
