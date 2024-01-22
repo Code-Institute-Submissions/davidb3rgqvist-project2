@@ -39,12 +39,11 @@
       <div>
         <h1 id="outputHeading">Let's go <span id="user-heading"></span>!</h1>
         <div id="flashcard" class="flashcard"></div>
-        <div id="wrong-answer">
-            <button id="speak-button">Speak</button>
-        </div>
+        <div id="wrong-answer"></div>
         <input placeholder="Enter your answer" class="user-input" id="input-word" type="text" required>
         <button id="user-answer" onclick="checkAnswer()" class="button"><h3>Submit</h3></button>
         <button id="play-again" onclick="playAgainButton()" class="button"><h3>Play again</h3></button>
+        <button id="speak-button" class="button"><h3>Listen to the correct word <i class="fa-solid fa-circle-play"></i></h3></button>
         <button id="exit-game" class="button"><h3>Scoreboard</h3></button>
         <div id="correct-answer-count">Correct Answers: 0</div>
       </div>

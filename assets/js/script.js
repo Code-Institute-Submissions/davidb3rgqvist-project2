@@ -16,9 +16,15 @@ const exitGameButton = document.getElementById("exit-game");
 const playAgainButton = document.getElementById("play-again");
 const backToGameButton = document.getElementById("back-to-game");
 
+const speakButton = document.getElementById("speak-button");
+
 // Add this code for correct answer count
 const correctAnswerCountElement = document.getElementById("correct-answer-count");
 // All event listeners:
+
+speakButton.addEventListener("click", function() {
+    speakWord(shuffledWords[currentWordIndex].fr);
+});
 
 // Add event listener to the Start Game button, together with validation
 startButton.addEventListener("click", function() {
@@ -212,10 +218,12 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
       wrongAnswerDiv.style.display = "none";
       submitButton.style.display = "block";
       playAgainButton.style.display = "none";
+      speakButton.style.display= "none";
       updateCorrectAnswerCount(totalCorrectAnswers);
     } else {
         speakWord(shuffledWords[currentWordIndex].fr);
         consecutiveCorrectAnswers = 0;
+        speakButton.style.display= "block";
         wrongAnswerDiv.style.display = "block";
         flashcardElement.textContent = "Correct word = " + shuffledWords[currentWordIndex].fr;
         flashcardElement.style.color = "#f1f2f2";
