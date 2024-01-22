@@ -1,6 +1,6 @@
-# Learn french with flashcards
+# WordStream
 
-Welcome to "Free Gym Locator," a website dedicated to helping users discover and explore outdoor fitness options across Sweden. Our mission is to provide a comprehensive resource for outdoor gym enthusiasts, promoting a healthy lifestyle and community engagement.
+WordStream: French Edition is an engaging language learning game designed to help you master essential French vocabulary effortlessly. Immerse yourself in the game, learn the top 1000 words, and watch your language skills flow with ease.
 
 - [Deployed page](https://davidb3rgqvist.github.io/project1/)
 - [Responsive test](docs/responsive-test.png)
@@ -64,13 +64,10 @@ Visual aesthetics focus on a clean and inviting design, integrating vibrant imag
 
 We plan to enhance the website with the following features:
 
-- User registration and profiles.
-- User-generated content, including gym uploads by user.
-- Advanced search and filters system.
-- Integration with social media platforms.
-- Basic exercise plan, with a AI-driven personal trainer as a premium option.
-- User engagement features, such as user forums and challenges.
-- Rating and comment system to highlight possible broken equipment, or lack of maintenance.
+- More languages.
+- Option to listen to the correct word.
+- Top ten user highscore.
+- 3d effect when flipping the flashcards.
 
 ## Testing
 
@@ -138,23 +135,18 @@ The development and creation of the Free Gym Locator website would not have been
 - **Figma:** Used for creating wireframes, aiding in the design process.
 - **Adobe Photoshop & Illustrator:** Used for image editing and graphic elements.
 - **Code Institute:** Primary educational content encompassing comprehensive videos elucidating HTML, CSS and UX.
-- **W3Schools:** Utilized to provide clear and straightforward explanations regarding HTML elements and styling.
 - **www.w3.org:** Utilized to perform validation test of HTML and CSS.
 - **https://ui.dev/amiresponsive:** Utilized for a quick overview of the responsivness.
 
-### Gym photos
-
-- **Photos used for gyms:** Photos used for the gym and gym equipment are properties of Free gym locator.
 
 ### External Resources
 
-- **Unsplash & Pexels:** Provided high-quality images used throughout the website.
+- **Adobe Express:** Provided high-quality images used throughout the website.
 - **GitHub:** Facilitated version control and hosting of the project with GitHub Pages.
 
 ### Inspirations and Mentors
 
 - **Brian O'Hare / Code Institute:** Provided guidance, mentorship, or inspiration during the project's development.
-- **Swedish military's visual identity:** For providing inspiration to our visual identity.
 - **Code Institute:** Parts of code taken from the "Love running project". Used for the header and the footer 
 
 We express our sincere appreciation to everyone who contributed directly or indirectly to the Free Gym Locator project, helping shape and enhance this platform for users seeking outdoor fitness options in Sweden.
