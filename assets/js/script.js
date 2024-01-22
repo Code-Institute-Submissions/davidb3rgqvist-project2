@@ -107,6 +107,12 @@ function resetCorrectAnswerCount() {
     updateCorrectAnswerCount(0);
 }
 
+function speakWord(word) {
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'fr-FR';
+    speechSynthesis.speak(utterance);
+}
+
  // Game
 
  // Array with the game words
@@ -208,6 +214,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
       playAgainButton.style.display = "none";
       updateCorrectAnswerCount(totalCorrectAnswers);
     } else {
+        speakWord(shuffledWords[currentWordIndex].fr);
         consecutiveCorrectAnswers = 0;
         wrongAnswerDiv.style.display = "block";
         flashcardElement.textContent = "Correct word = " + shuffledWords[currentWordIndex].fr;
