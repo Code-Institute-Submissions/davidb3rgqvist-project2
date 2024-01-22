@@ -120,3 +120,7 @@ section {
 .latest-score {
     color: green;
 }
+
+#correct-answer-count {
+    font-weight: bold;
+}

@@ -16,6 +16,10 @@ const exitGameButton = document.getElementById("exit-game");
 const playAgainButton = document.getElementById("play-again");
 const backToGameButton = document.getElementById("back-to-game");
 
+// Add this code for correct answer count
+const correctAnswerCountElement = document.getElementById("correct-answer-count");
+// All event listeners:
+
 // Add event listener to the Start Game button, together with validation
 startButton.addEventListener("click", function() {
   const userNameValue = userNameElement.value;
@@ -42,6 +46,36 @@ document.getElementById("user-name").addEventListener("keydown", function(event)
         }
     }
   });
+     // Add event listener for the "Submit" button
+     document.getElementById("user-answer").addEventListener("click", function() {
+        checkAnswer();
+    });
+
+    // Add event listener for the "Text input"
+    document.getElementById("input-word").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+          checkAnswer();
+        }
+      });
+    
+    // Add event listener for the "Play Again" button
+    document.getElementById("play-again").addEventListener("click", function() {
+        resetGame();
+    });
+
+    exitGameButton.addEventListener("click", function() {
+        showScoreSection();
+        displayHighScores();
+      });
+      
+      playAgainButton.addEventListener("click", function() {
+        userInputElement.focus();
+        showGameSection();
+      });
+      
+      backToGameButton.addEventListener("click", function() {
+        showGameSection();
+      });
 
 // Show intro-section and hide others
 function showIntroSection() {
@@ -65,20 +99,13 @@ function showScoreSection() {
   scoreSection.classList.remove("hide");
 }
 
-exitGameButton.addEventListener("click", function() {
-  showScoreSection();
-  displayHighScores();
-});
+function updateCorrectAnswerCount(count) {
+    correctAnswerCountElement.textContent = "Correct Answers: " + count;
+}
 
-playAgainButton.addEventListener("click", function() {
-  userInputElement.focus();
-  showGameSection();
-});
-
-backToGameButton.addEventListener("click", function() {
-  showGameSection();
-});
-
+function resetCorrectAnswerCount() {
+    updateCorrectAnswerCount(0);
+}
 
  // Game
 
@@ -148,6 +175,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
   function resetGame() {
     currentWordIndex = 0;
     totalCorrectAnswers = 0;
+    resetCorrectAnswerCount();
     displayWord();
     showGameSection();
     userInputElement.focus();
@@ -165,16 +193,20 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
       const submitButton = document.getElementById("user-answer");
       const playAgainButton = document.getElementById("play-again");
 
-
     if (userInputElement.value.toLowerCase() === shuffledWords[currentWordIndex].fr.toLowerCase()) {
       currentWordIndex++;
       consecutiveCorrectAnswers++;
       totalCorrectAnswers++;
-      displayWord();
+      flashcardElement.style.color = "green";
+      flashcardElement.style.backgroundColor = "green";
+      setTimeout(() => {
+        displayWord();
+      }, 150)
       userInputElement.value = "";
       wrongAnswerDiv.style.display = "none";
       submitButton.style.display = "block";
       playAgainButton.style.display = "none";
+      updateCorrectAnswerCount(totalCorrectAnswers);
     } else {
         consecutiveCorrectAnswers = 0;
         wrongAnswerDiv.style.display = "block";
@@ -217,26 +249,13 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
         }
         
         updateHighScores(totalCorrectAnswers);
-        displayHighScores();
+        displayHighScores();  
+
+
     } 
     }
  
-    // Add event listener for the "Submit" button
-    document.getElementById("user-answer").addEventListener("click", function() {
-        checkAnswer();
-    });
-
-    // Add event listener for the "Text input"
-    document.getElementById("input-word").addEventListener("keydown", function(event) {
-        if (event.key === "Enter") {
-          checkAnswer();
-        }
-      });
-    
-    // Add event listener for the "Play Again" button
-    document.getElementById("play-again").addEventListener("click", function() {
-        resetGame();
-    });
+ 
     
     // Initial setup
     showIntroSection()
