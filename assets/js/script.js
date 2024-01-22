@@ -1,73 +1,83 @@
 document.addEventListener("DOMContentLoaded", function() {
+  // Clear the the highscore
+  localStorage.clear();
+        
   // Add username to the game heading
-  const userNameElement = document.getElementById("user-name");
-  const userNameDisplayElement = document.getElementById("user-heading");
-  const startButton = document.getElementById("start-game");
-  const userInputElement = document.getElementById("input-word");
+const userNameElement = document.getElementById("user-name");
+const userNameDisplayElement = document.getElementById("user-heading");
+const startButton = document.getElementById("start-game");
+const userInputElement = document.getElementById("input-word");
 
-  // Add event listener to the Start Game button
-  startButton.addEventListener("click", function() {
-    const userNameValue = userNameElement.value;
+// Show and hide sections
+const introSection = document.getElementById("intro");
+const gameSection = document.getElementById("game");
+const scoreSection = document.getElementById("score");
+const exitGameButton = document.getElementById("exit-game");
+const playAgainButton = document.getElementById("play-again");
+const backToGameButton = document.getElementById("back-to-game");
+
+// Add event listener to the Start Game button, together with validation
+startButton.addEventListener("click", function() {
+  const userNameValue = userNameElement.value;
+  if (userNameValue !== "") {
     userNameDisplayElement.textContent = userNameValue;
-    userNameElement.value = "";
     showGameSection();
     displayWord();
-  });
-
-  // Add event listener to the username text field
-  document.getElementById("user-name").addEventListener("keydown", function(event) {
+} else {
+    // Alert the user or handle the case where the username is empty
+    alert("Please enter a valid username.");
+}
+});
+// Add event listener to the username input field, together with validation
+document.getElementById("user-name").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
-      const userNameValue = userNameElement.value;
-      userNameDisplayElement.textContent = userNameValue;
-      showGameSection();
-      displayWord();
+        const userNameValue = userNameElement.value.trim();
+        if (userNameValue !== "") {
+            userNameDisplayElement.textContent = userNameValue;
+            showGameSection();
+            displayWord();
+        } else {
+            // Alert the user or handle the case where the username is empty
+            alert("Please enter a valid username.");
+        }
     }
   });
 
-  // Show and hide sections
-  const introSection = document.getElementById("intro");
-  const gameSection = document.getElementById("game");
-  const scoreSection = document.getElementById("score");
+// Show intro-section and hide others
+function showIntroSection() {
+  introSection.classList.remove("hide");
+  gameSection.classList.add("hide");
+  scoreSection.classList.add("hide");
+}
 
-  const exitGameButton = document.getElementById("exit-game");
-  const playAgainButton = document.getElementById("play-again");
-  const backToGameButton = document.getElementById("back-to-game");
+// Show game-section and hide others
+function showGameSection() {
+  introSection.classList.add("hide");
+  gameSection.classList.remove("hide");
+  scoreSection.classList.add("hide");
+  userInputElement.focus();
+}
 
-  // Show intro-section and hide others
-  function showIntroSection() {
-    introSection.classList.remove("hide");
-    gameSection.classList.add("hide");
-    scoreSection.classList.add("hide");
-  }
+// Show score-section and hide others
+function showScoreSection() {
+  introSection.classList.add("hide");
+  gameSection.classList.add("hide");
+  scoreSection.classList.remove("hide");
+}
 
-  // Show game-section and hide others
-  function showGameSection() {
-    introSection.classList.add("hide");
-    gameSection.classList.remove("hide");
-    scoreSection.classList.add("hide");
-    userInputElement.focus();
-  }
+exitGameButton.addEventListener("click", function() {
+  showScoreSection();
+  displayHighScores();
+});
 
-  // Show score-section and hide others
-  function showScoreSection() {
-    introSection.classList.add("hide");
-    gameSection.classList.add("hide");
-    scoreSection.classList.remove("hide");
-  }
+playAgainButton.addEventListener("click", function() {
+  userInputElement.focus();
+  showGameSection();
+});
 
-  exitGameButton.addEventListener("click", function() {
-    showScoreSection();
-    displayHighScores();
-  });
-
-  playAgainButton.addEventListener("click", function() {
-    userInputElement.focus();
-    showGameSection();
-  });
-
-  backToGameButton.addEventListener("click", function() {
-    showGameSection();
-  });
+backToGameButton.addEventListener("click", function() {
+  showGameSection();
+});
 
 
  // Game
@@ -137,6 +147,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
   // Reset the game
   function resetGame() {
     currentWordIndex = 0;
+    totalCorrectAnswers = 0;
     displayWord();
     showGameSection();
     userInputElement.focus();
@@ -198,6 +209,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
                     listItem.textContent = `${score} words in a row`;
                     highScoresList.appendChild(listItem);
                 }
+                
             });
 
             scoreSection.innerHTML = "<h1>Your top 20 High Scores</h1>";
