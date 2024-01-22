@@ -123,11 +123,12 @@ function speakWord(word) {
 
  // Array with the game words
   const words = [
+    // First 50 words
     {"fr": "comme", "en": "as"},
     {"fr": "je", "en": "I"},
     {"fr": "son", "en": "his"},
     {"fr": "que", "en": "that"},
-    {"fr": "il", "en": "il"},
+    {"fr": "il", "en": "he"},
     {"fr": "était", "en": "was"},
     {"fr": "pour", "en": "for"},
     {"fr": "sur", "en": "on"},
@@ -139,6 +140,7 @@ function speakWord(word) {
     {"fr": "un", "en": "one"},
     {"fr": "avoir", "en": "have"},
     {"fr": "à partir de", "en": "from"},
+    {"fr": "ce", "en": "this"},
     {"fr": "par", "en": "by"},
     {"fr": "chaud", "en": "hot"},
     {"fr": "mot", "en": "word"},
@@ -152,6 +154,29 @@ function speakWord(word) {
     {"fr": "eu", "en": "had"},
     {"fr": "la", "en": "the"},
     {"fr": "de", "en": "of"},
+    {"fr": "à", "en": "to"},
+    {"fr": "et", "en": "and"},
+    {"fr": "un", "en": "a"},
+    {"fr": "dans", "en": "in"},
+    {"fr": "nous", "en": "we"},
+    {"fr": "boîte", "en": "can"},
+    {"fr": "dehors", "en": "out"},
+    {"fr": "autre", "en": "other"},
+    {"fr": "étaient", "en": "were"},
+    {"fr": "qui", "en": "which"},
+    {"fr": "faire", "en": "do"},
+    {"fr": "leur", "en": "their"},
+    {"fr": "temps", "en": "time"},
+    {"fr": "si", "en": "if"},
+    {"fr": "volonté", "en": "will"},
+    {"fr": "comment", "en": "how"},
+    {"fr": "dit", "en": "said"},
+    {"fr": "un", "en": "an"},
+    {"fr": "chaque", "en": "each"},
+    {"fr": "dire", "en": "tell"},
+    // Continue with more words...
+
+
   ]
 ;
 // Array with the high scores
@@ -239,7 +264,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
         function updateHighScores(score) {
             highScores.push(score);
             highScores.sort((a, b) => b - a);
-            highScores = highScores.slice(0, 20);
+            highScores = highScores.slice(0, 10);
             localStorage.setItem("highScores", JSON.stringify(highScores));
         }
     
@@ -258,7 +283,7 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
                 
             });
 
-            scoreSection.innerHTML = "<h1>Your top 20 High Scores</h1>";
+            scoreSection.innerHTML = "<h1>Your top 10 High Scores</h1>";
             scoreSection.appendChild(highScoresList);
         }
         
