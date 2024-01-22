@@ -13,6 +13,18 @@
 i {
     color: #f1f2f2;
 }
+p {
+    margin-top: 10px;
+}
+#hero-text {
+    width: 250px;
+    margin-bottom: 20px;
+}
+hr {
+    border: 1px solid: #393E40;
+    margin: 10px 0;
+  }
+
 .user-input {
     width: 250px;
     height: 40px;
@@ -22,6 +34,9 @@ i {
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
+}
+#benifits {
+    text-align: left;
 }
 
 .button {
@@ -42,7 +57,7 @@ i {
 }
 
 h1  {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 10px;
 }
 
@@ -81,7 +96,7 @@ section {
 /* Intro section */
 
 #intro-heading {
-    padding: 70px 0;
+    padding: 10px 0;
 }
 
 
