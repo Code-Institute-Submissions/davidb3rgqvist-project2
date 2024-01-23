@@ -1,7 +1,7 @@
 /* Google fonts import */
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&display=swap');
 
+/* Small screens, phones and tablets */
 /* General rules */
 * {
     padding: 0;
@@ -9,64 +9,6 @@
     box-sizing: border-box;
     font-family: 'roboto', sans-serif;
     color: #393E40;
-}
-i {
-    color: #f1f2f2;
-}
-
-#rules {
-    text-align: left;
-}
-#hero-text {
-    width: 250px;
-}
-
-#rules-text {
-    font-size: 80%;
-}
-
-#triumph-image {
-    width: 100px;
-    margin-bottom: 30px;
-}
-
-#hero-image {
-    width: 200px;
-}
-
-#motivation-image {
-    width: 250px;
-}
-
-.user-input {
-    width: 250px;
-    height: 40px;
-    padding: 5px;
-    font-size: large;
-    font-weight: bold;  
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-#benifits {
-    text-align: left;
-}
-
-.button {
-    padding: 10px;
-    width: 250px;
-    margin-bottom: 10px;
-    background-color: #00123c;
-    color: #f1f2f2;
-    border-radius: 5px;
-    border: 1px solid #000000;
-    text-decoration: none;
-}
-
-.button:hover {
-    background-color: #2e2b40;
-    color: #f1f2f2;
-    border: 1px solid #E7EDEB;
 }
 
 h1  {
@@ -76,6 +18,29 @@ h1  {
 
 h3  {
     color: #f1f2f2;
+}
+
+i {
+    color: #f1f2f2;
+}
+
+/* Buttons */
+.button {
+    padding: 10px;
+    width: 250px;
+    height: 40px;
+    margin-bottom: 10px;
+    background-color: #03494e;
+    color: #f1f2f2;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #0b3d40;
+    color: #f1f2f2;
+    border: 1px solid #E7EDEB;
 }
 
 /* Main page */
@@ -106,15 +71,19 @@ section {
     border-radius: 20px;
 }
 
-/* Intro section */
-
-#intro-heading {
-    padding: 10px 0;
+/* Inputfields */
+.user-input {
+    width: 250px;
+    height: 40px;
+    padding: 5px;
+    font-size: large;
+    font-weight: bold;  
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
-
-/* Game section */
-
+/* Flashcard in the game section */
 .flashcard {
     width: 250px;
     height: 150px;
@@ -130,6 +99,32 @@ section {
     display: none;
 }
 
+/* Intro section */
+#intro-heading {
+    padding: 10px 0;
+}
+
+#hero-text {
+    width: 250px;
+}
+
+#hero-image {
+    width: 200px;
+}
+
+#rules {
+    text-align: left;
+}
+
+#rules-text {
+    font-size: 80%;
+}
+
+/* Game section */
+#correct-answer-count {
+    font-weight: bold;
+}
+
 #wrong-answer {
     display: none;
 }
@@ -142,7 +137,18 @@ section {
     display: none;
 }
 
+#motivation-image {
+    width: 250px;
+}
+
 /* Score section */
+#results-placeholder {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    text-align: left;
+    font-size: 180%;
+}
+
 #high-scores-list {
   font-weight: bold;
 }
@@ -151,17 +157,117 @@ section {
    margin-bottom: 30px;
 }
 
-.latest-score {
-    color: green;
+#triumph-image {
+    width: 100px;
+    margin-bottom: 30px;
 }
 
-#correct-answer-count {
-    font-weight: bold;
+/*Media quary: laptop */
+@media screen and (min-width: 1180px) {
+     
+    /* Section: intro, game area and personal scoreboard */
+    section {
+        width: 450px;
+        height: 670px;
+        padding: 20px 100px;
+    }
+
+    /* Buttons */
+    .button {
+        width: 300px;
+    }
+
+    /* Inputfields */
+    .user-input {
+        margin-top: 20px;
+        width:300px;
+    }
+        
+    /* Flashcard in the game section */
+    .flashcard {
+        width: 300px;
+        height: 230px;
+        margin-bottom: 20px;
+    }
+        
+    /* Intro section */       
+    #hero-text {
+        width: 300px;
+    }
+        
+    #hero-image {
+        width: 250px;
+    }
+
+    /* Game section */
+    #motivation-image {
+        margin-top: 10px;
+        width: 300px;
+    }
+        
+    /* Score section */
+    #triumph-image {
+        width: 150px;
+    }
 }
 
-#results-placeholder {
-    margin-top: 50px;
-    margin-bottom: 60px;
-    text-align: left;
-    font-size: 180%;
+/* Media queries for larger screens */
+@media screen and (min-width: 1800px) {
+
+    /* Section: intro, game area and personal scoreboard */
+    section {
+        margin-top: 150px;
+        width: 700px;
+        height: 900px;
+        padding: 20px 150px;
+    }
+
+    h5 {
+        font-size: 110%;
+        margin-top: 30px;
+    }
+
+    /* Buttons */
+    .button {
+        width: 400px;
+    }
+
+    /* Inputfields */
+    .user-input {
+        width:400px;
+    }
+
+    /* Flashcard in the game section */
+    .flashcard {
+        width: 400px;
+        height: 350px;
+        margin-bottom: 50px;
+        margin-top: 20px;
+    }
+
+    /* Intro section */
+    #hero-text {
+        width: 400px;
+    }
+
+    #hero-image {
+        width: 400px;
+    }
+
+    #rules-text {
+        font-size: 100%;
+    }
+
+    /* Game section */
+    #motivation-image {
+        margin-top: 10px;
+        width: 400px;
+    }
+
+    /* Score section */
+
+    #results {
+        margin-top: 50px;
+    }      
 }
+  
