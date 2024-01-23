@@ -13,17 +13,30 @@
 i {
     color: #f1f2f2;
 }
-p {
-    margin-top: 10px;
+
+#rules {
+    text-align: left;
 }
 #hero-text {
     width: 250px;
-    margin-bottom: 20px;
 }
-hr {
-    border: 1px solid: #393E40;
-    margin: 10px 0;
-  }
+
+#rules-text {
+    font-size: 80%;
+}
+
+#triumph-image {
+    width: 100px;
+    margin-bottom: 30px;
+}
+
+#hero-image {
+    width: 200px;
+}
+
+#motivation-image {
+    width: 250px;
+}
 
 .user-input {
     width: 250px;
