@@ -158,3 +158,10 @@ section {
 #correct-answer-count {
     font-weight: bold;
 }
+
+#results-placeholder {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    text-align: left;
+    font-size: 180%;
+}

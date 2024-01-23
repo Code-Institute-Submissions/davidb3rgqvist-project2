@@ -212,6 +212,8 @@ let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
   function resetGame() {
     currentWordIndex = 0;
     totalCorrectAnswers = 0;
+    speakButton.style.display = "none";
+    exitGameButton.style.display = "block";
     resetCorrectAnswerCount();
     displayWord();
     showGameSection();
