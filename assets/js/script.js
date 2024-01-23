@@ -126,19 +126,18 @@ document.getElementById("input-word").addEventListener("keydown", function(event
     
 // Add event listener for the "Play Again" button
 document.getElementById("play-again").addEventListener("click", function() {
-     resetGame();
+  resetGame();
+  userInputElement.focus();
+  showGameSection();
 });
 
+// Add event listener for the "Highscore" button
 exitGameButton.addEventListener("click", function() {
       showScoreSection();
       displayHighScores();
 });
-      
-playAgainButton.addEventListener("click", function() {
-userInputElement.focus();
-      showGameSection();
-});
-      
+
+// Add event listener for the "Back to game" button
 backToGameButton.addEventListener("click", function() {
       showGameSection();
 });
@@ -166,21 +165,32 @@ function showScoreSection() {
   scoreSection.classList.remove("hide");
 }
 
+// Counts correct answers
 function updateCorrectAnswerCount(count) {
   correctAnswerCountElement.textContent = "Correct Answers: " + count;
 }
 
+// Resets correct answers counter
 function resetCorrectAnswerCount() {
   updateCorrectAnswerCount(0);
 }
 
+/**
+ * Makes it possible to here the correct word in french
+ * @param {*} word 
+ */
 function speakWord(word) {
   const utterance = new SpeechSynthesisUtterance(word);
   utterance.lang = 'fr-FR';
   speechSynthesis.speak(utterance);
 }
 
-// Shuffles the word to have a new "first" word every time the webpage reloads.
+
+/**
+ * Shuffles the word to have a new "first" word every time the webpage reloads.
+ * @param {*} words 
+ * @returns 
+ */
 function shuffleWords(words) {
   for (let i = words.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -189,6 +199,7 @@ function shuffleWords(words) {
     return words;
 }
 
+// Adds the game word to the flashcard
 function displayWord() {
   const flashcardElement = document.getElementById("flashcard");
   flashcardElement.textContent = shuffledWords[currentWordIndex].en;
@@ -215,6 +226,7 @@ function resetGame() {
   document.getElementById("wrong-answer").style.display = "none";
   userInputElement.value = "";
 }
+
 // Check if the user have inserted the correct word
 function checkAnswer() {
   const userInputElement = document.getElementById("input-word");
@@ -252,7 +264,7 @@ function checkAnswer() {
     resetGame();
 });
 
-    // Gets the score and sends it to the scoreboard
+    // Adds the score of each run, sorts them and adds it to local storage.
     function updateHighScores(score) {
       highScores.push(score);
       highScores.sort((a, b) => b - a);
@@ -260,6 +272,7 @@ function checkAnswer() {
       localStorage.setItem("highScores", JSON.stringify(highScores));
     }
     
+    // Gets the score and sends it to the scoreboard
     function displayHighScores() {
       const scoreSection = document.getElementById("results");
       const highScoresList = document.createElement("ol");
