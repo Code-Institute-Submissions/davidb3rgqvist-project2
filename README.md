@@ -82,11 +82,9 @@ Testing was an integral part of the website development process. We performed co
 - [Lighthouse report](docs/lighthouse-report.png)
 - [Responsiveness overview](docs/responsive-test.png)
 
-## Development Journey with WordStream Learning
+## Development
 
 In crafting WordStream Learning, our development journey revolved around harnessing the power of HTML5, CSS3, and JavaScript. These technologies served as the backbone, providing a solid foundation for the website's structure, style, and interactive features. Our approach embraced a mobile-first philosophy, ensuring a seamless experience across various devices. To bring our vision to life, we leveraged Figma for meticulous UI/UX design and relied on Git and GitHub for effective version control.
-
-## Guiding the Way Forward
 
 As we chart the course for future development, we've identified key areas that can further enrich the WordStream Learning experience:
 
