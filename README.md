@@ -57,8 +57,9 @@ Visual aesthetics focus on a clean and inviting design, integrating vibrant imag
 - Front-end: HTML, CSS, JavaScript
 - Figma for wireframes
 - ChatGPT - for AI assistance
-- Photoshop for image editing
+- Adobe Photoshop for image editing
 - Adobe express for image content
+- Adobe Illustrator for graphic content
 
 ## Future Features
 
@@ -98,7 +99,7 @@ Our development process for Free Gym Locator involved using HTML5, CSS3, and Jav
 
 - **Security Measures:** Implement robust security measures to protect user data and prevent security vulnerabilities or breaches.
 
-Moving forward, these suggested steps aim to elevate the Free Gym Locator website by focusing on user-centric enhancements, feature expansion, accessibility, continuous testing, community engagement, and improved security.
+Moving forward, these suggested steps aim to elevate the WordStream website by focusing on user-centric enhancements, feature expansion, accessibility, continuous testing, community engagement, and improved security.
 
 ## Deployment
 
@@ -133,7 +134,7 @@ The development and creation of the WordStream website would not have been possi
 - **Font Awesome:** Provided icons used for navigation the play button, enhancing user experience.
 - **ChatGPT by OpenAI:** Utilized for AI assistance and content suggestions.
 - **Figma:** Used for creating wireframes, aiding in the design process.
-- **Adobe Photoshop & Express:** Used for image editing and graphic elements.
+- **Adobe Photoshop, Illustrator & Express:** Used for image editing and graphic elements.
 - **Code Institute:** Primary educational content encompassing comprehensive videos elucidating HTML, CSS and UX.
 - **www.w3.org:** Utilized to perform validation test of HTML and CSS.
 - **https://ui.dev/amiresponsive:** Utilized for a quick overview of the responsivness.
