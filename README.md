@@ -75,7 +75,7 @@ We plan to enhance the website with the following features:
 Testing was an integral part of the website development process. We performed comprehensive tests across various devices and screen sizes to ensure a seamless user experience. This included functional testing to verify proper functionality of all features, as well as responsive testing to guarantee optimal display on different devices. Additionally we performed serval validation tests.
 
 - [HTML Validation of index.html, no errors found](docs/index-validation.png)
-- [CSS Validation of style.css, no errors found](project2/docs/css-validation.png)
+- [CSS Validation of style.css, no errors found](docs/css-validation.png)
 - [Lighthouse report](docs/lighthouse-report.png)
 - [Responsiveness overview](docs/responsive-test.png)
 
