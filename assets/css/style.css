@@ -16,10 +16,6 @@ h1  {
     margin-bottom: 10px;
 }
 
-h3  {
-    color: #f1f2f2;
-}
-
 i {
     color: #f1f2f2;
 }
@@ -35,6 +31,8 @@ i {
     border-radius: 5px;
     border: 1px solid #000000;
     text-decoration: none;
+    font-weight: bold;
+    font-size: 105%;
 }
 
 .button:hover {
@@ -64,7 +62,7 @@ section {
     text-align: center;
     padding: 20px 60px;
     border: 1px solid #000000;
-    box-shadow: 0 0 3px #393E40;
+    box-shadow: 0 0 3px grey;
     background-image: url('../images/sectionback-ground.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -91,7 +89,7 @@ section {
     justify-content: center;
     align-items: center;
     border: 1px solid #000000;
-    box-shadow: 0 0 3px #393E40;
+    box-shadow: 0 0 3px grey;
     background-color: rgb(241, 236, 230);
     border-radius: 10px;
 }
