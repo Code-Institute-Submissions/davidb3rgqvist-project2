@@ -1,3 +1,8 @@
+/* jshint esversion: 11 */
+
+let SpeechSynthesisUtterance;
+let speechSynthesis;
+
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
     // Clear the the highscore
@@ -72,11 +77,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const shuffledWords = shuffleWords([...words]);
 
     // All variables
+    let displayHighScores;
     let currentWordIndex = 0;
     let totalCorrectAnswers = 0;
     let consecutiveCorrectAnswers = 0;
     // Array with the high scores
     let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+    // The declarations and initializations of SpeechSynthesisUtterance and speechSynthesis
+    SpeechSynthesisUtterance = window.SpeechSynthesisUtterance || window.webkitSpeechSynthesisUtterance;
+    speechSynthesis = window.speechSynthesis || window.webkitSpeechSynthesis;
 
     // All event listeners:
 
@@ -191,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Shuffles the word to have a new "first" word every time the webpage reloads.
      * @param {*} words 
-     * @returns {words} A word from the shuffled array
+     * @returns {words} A shuffled array
      */
     function shuffleWords (words) {
       for (let i = words.length - 1; i > 0; i--) {
@@ -270,7 +280,7 @@ document.addEventListener("DOMContentLoaded", function () {
          * Adds the score of each run, sorts them and adds it to local storage.
          * @param {*} score 
          */
-        function updateHighScores (score) {
+        function updateHighScores(score) {
           highScores.push(score);
           highScores.sort((a, b) => b - a);
           highScores = highScores.slice(0, 10);
@@ -278,18 +288,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Gets the score and sends it to the scoreboard
-        function displayHighScores () {
+        function displayHighScores() {
           const scoreSection = document.getElementById("results");
           const highScoresList = document.createElement("ol");
           highScoresList.id = "high-scores-list";
           highScores.forEach((score, index) => {
-          const listItem = document.createElement("ol");
-          highScoresList.appendChild(listItem);
-          if (score !== undefined && score !== null) {
-            const listItem = document.createElement("ol");
-            listItem.textContent = `${score} words in a row`;
-            highScoresList.appendChild(listItem);
-          }
+              const listItem = document.createElement("ol");
+              highScoresList.appendChild(listItem);
+              if (score !== undefined && score !== null) {
+                  const listItem = document.createElement("ol");
+                  listItem.textContent = `${score} words in a row`;
+                  highScoresList.appendChild(listItem);
+              }
           });
           scoreSection.innerHTML = "<h1>Your top 10 High Scores</h1>";
           scoreSection.appendChild(highScoresList);
