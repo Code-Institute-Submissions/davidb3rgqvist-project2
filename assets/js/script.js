@@ -11,7 +11,6 @@ const introSection = document.getElementById("intro");
 const gameSection = document.getElementById("game");
 const scoreSection = document.getElementById("score");
 const exitGameButton = document.getElementById("exit-game");
-const playAgainButton = document.getElementById("play-again");
 const backToGameButton = document.getElementById("back-to-game");
 const speakButton = document.getElementById("speak-button");
 const correctAnswerCountElement = document.getElementById("correct-answer-count");
@@ -79,6 +78,7 @@ let consecutiveCorrectAnswers = 0;
 let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 // All event listeners:
+
 // Add event listener listen to the correct word button
 speakButton.addEventListener("click", function() {
     speakWord(shuffledWords[currentWordIndex].fr);
@@ -92,7 +92,7 @@ startButton.addEventListener("click", function() {
     showGameSection();
     displayWord();
   } else {
-    // Alert the user or handle the case where the username is empty
+    // Alert the user when name field is empty
     alert("Please enter a valid username.");
   }
 });
@@ -120,7 +120,8 @@ document.getElementById("user-answer").addEventListener("click", function() {
 // Add event listener for the "Text input"
 document.getElementById("input-word").addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
-     checkAnswer();
+    userInputElement.value = userInputElement.value.trim();
+    checkAnswer();
   }
 });
     
@@ -143,6 +144,7 @@ backToGameButton.addEventListener("click", function() {
 });
 
 //All Functions
+
 // Show intro-section and hide others
 function showIntroSection() {
   introSection.classList.remove("hide");
@@ -185,11 +187,10 @@ function speakWord(word) {
   speechSynthesis.speak(utterance);
 }
 
-
 /**
  * Shuffles the word to have a new "first" word every time the webpage reloads.
  * @param {*} words 
- * @returns 
+ * @returns {words} A word from the shuffled array
  */
 function shuffleWords(words) {
   for (let i = words.length - 1; i > 0; i--) {
@@ -264,7 +265,10 @@ function checkAnswer() {
     resetGame();
 });
 
-    // Adds the score of each run, sorts them and adds it to local storage.
+    /**
+     * Adds the score of each run, sorts them and adds it to local storage.
+     * @param {*} score 
+     */
     function updateHighScores(score) {
       highScores.push(score);
       highScores.sort((a, b) => b - a);
@@ -298,4 +302,9 @@ function checkAnswer() {
 showIntroSection()
 });
 
-
+// Brief overview or documentation:
+/* 
+  This script handles the logic for a French-English word matching game. 
+  It includes functions for displaying game sections, handling user input, 
+  and updating scores.
+*/
