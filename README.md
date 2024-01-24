@@ -2,7 +2,7 @@
 
 WordStream: French Edition is an engaging language learning game designed to help you master essential French vocabulary effortlessly. Immerse yourself in the game, learn the top 1000 words, and watch your language skills flow with ease.
 
-- [Deployed page](https://davidb3rgqvist.github.io/project1/)
+- [Deployed page](https://davidb3rgqvist.github.io/project2/)
 - [Responsive test](docs/responsive-test.png)
 
 
@@ -58,14 +58,14 @@ Visual aesthetics focus on a clean and inviting design, integrating vibrant imag
 - Figma for wireframes
 - ChatGPT - for AI assistance
 - Photoshop for image editing
-- Adobe illustrator for graphic elements
+- Adobe express for image content
 
 ## Future Features
 
 We plan to enhance the website with the following features:
 
 - More languages.
-- Option to listen to the correct word.
+- Filter option to be able the practice the words the the user  finds harder.
 - Top ten user highscore.
 - 3d effect when flipping the flashcards.
 
@@ -117,23 +117,23 @@ The deployment process involved leveraging GitHub Pages, an integrated service p
 
 ### Accessing the Deployed Site
 
-The deployed Free Gym Locator website can be accessed using the following URL: [https://github.com/davidb3rgqvist/project1](https://github.com/davidb3rgqvist/project1)
+The deployed WordStream website can be accessed using the following URL: [https://davidb3rgqvist.github.io/project2/](https://davidb3rgqvist.github.io/project2/)
 
-The GitHub Pages deployment offers a convenient way to share the Free Gym Locator website with users globally.
+The GitHub Pages deployment offers a convenient way to share the WordStream website with users globally.
 
-Feel free to explore the live version of the Free Gym Locator.
+Feel free to explore the live version of the WordStream game.
 
 ## Credits
 
-The development and creation of the Free Gym Locator website would not have been possible without the contributions, support, and resources from various individuals and organizations. We would like to extend our gratitude and credit to the following:
+The development and creation of the WordStream website would not have been possible without the contributions, support, and resources from various individuals and organizations. We would like to extend our gratitude and credit to the following:
 
 ### Open-Source Libraries and Tools
 
 - **Google Fonts:** Used for typography and font styles across the website.
-- **Font Awesome:** Provided icons used for navigation, enhancing user experience.
+- **Font Awesome:** Provided icons used for navigation the play button, enhancing user experience.
 - **ChatGPT by OpenAI:** Utilized for AI assistance and content suggestions.
 - **Figma:** Used for creating wireframes, aiding in the design process.
-- **Adobe Photoshop & Illustrator:** Used for image editing and graphic elements.
+- **Adobe Photoshop & Express:** Used for image editing and graphic elements.
 - **Code Institute:** Primary educational content encompassing comprehensive videos elucidating HTML, CSS and UX.
 - **www.w3.org:** Utilized to perform validation test of HTML and CSS.
 - **https://ui.dev/amiresponsive:** Utilized for a quick overview of the responsivness.
@@ -149,4 +149,4 @@ The development and creation of the Free Gym Locator website would not have been
 - **Brian O'Hare / Code Institute:** Provided guidance, mentorship, or inspiration during the project's development.
 - **Code Institute:** Parts of code taken from the "Love running project". Used for the header and the footer 
 
-We express our sincere appreciation to everyone who contributed directly or indirectly to the Free Gym Locator project, helping shape and enhance this platform for users seeking outdoor fitness options in Sweden.
+We express our sincere appreciation to everyone who contributed directly or indirectly to WordStream project, helping shape and enhance this platform for users seeking to learn 1000 french words in a quick and fun way.
