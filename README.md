@@ -20,35 +20,51 @@ WordStream: French Edition is an engaging language learning game designed to hel
 
 ### Strategy:
 
-The WordStream Learning website is strategically developed to provide an enriching learning experience for users interested in expanding their WordStream knowledge. Our primary goal is to create a platform that is intuitive, accessible, and fosters community engagement.
+WordStream is a language learning game designed to help users master the 1000 most common French words for effective language acquisition. The game focuses on providing an interactive and engaging learning experience, aiming to kickstart users' ability to speak French.
 
 #### User Goals:
 
-- **Exploring WordStream Features:** Allow users to effortlessly navigate and explore various features and functionalities within WordStream.
-- **Accessing In-Depth Tutorials:** Provide comprehensive tutorials, guides, and resources to enhance users' understanding of WordStream.
-- **Contributing Knowledge:** Enable users to contribute by sharing insights, tips, and best practices related to WordStream.
-- **Connecting with the Community:** Cultivate a collaborative environment where users can connect, share experiences, and learn together.
+- **Learn Core Vocabulary:** Users aim to master the 1000 most common French words to kickstart their ability to speak the language.
+- **Effective Learning:** Users seek an efficient and effective learning experience, acquiring words gradually through practice.
+- **Interactive Learning:** Users are looking for an interactive and engaging method to enhance their language skills.
 
 #### Owner Goals:
 
-- **Optimizing User Learning:** Prioritize a user-centric approach, ensuring an optimal learning experience through clear navigation and interaction.
-- **Building a Knowledge Community:** Foster a vibrant community of WordStream enthusiasts, encouraging active contributions and interactions.
-- **Expanding Educational Resources:** Regularly update and expand the platform's educational content to cover new features and changes.
-- **Promoting Skill Development:** Inspire and support skill development by providing accessible and comprehensive learning resources.
+- **User Retention:** The primary goal is to keep users engaged and motivated to continue their language learning journey.
+- **Educational Impact:** The owner aims to contribute positively to users' language acquisition.
+- **User Satisfaction:** Ensuring that users find the game enjoyable and beneficial for language learning
 
 ### Scope:
-The platform focuses on empowering users to explore WordStream, contribute knowledge, and participate in a collaborative learning environment. The scope includes in-depth tutorials, user-generated content, and a user-friendly interface for easy navigation. 
+
+- **Learning Mechanism:** The primary function is to present users with French-English word pairs for learning.
+- **Feedback System:** Provide instant feedback on correct and incorrect answers, reinforcing learning.
+- **Replayability:** Allow users to play the game repeatedly to reinforce vocabulary and improve retention.
+- **Shuffling Words:** Implement a mechanism to shuffle words on page reload, providing a fresh learning experience.
 [Screen shots of the pages with comments](docs/comments.png)
 
 ### Structure:
-The website architecture is designed with a user-centric approach, featuring a dynamic homepage, detailed tutorials, and an informative "About Us" section that provides insights into the platform's mission and values.
+
+- **Flashcard Interface:** Use a flashcard format to present words, focusing on one word at a time for effective learning.
+- **User Input:** Incorporate a text input for users to type their answers.
+- **Feedback Display:** Display a visual cue (e.g., green flash) for correct answers and provide the correct word on mistakes.
+- **Audio Feedback:** Include the option for users to listen to the correct pronunciation.
+
 
 ### Skeleton:
-The design follows a mobile-first approach, ensuring responsive interfaces across devices. Wireframes and layouts prioritize ease of use, intuitive navigation, and a clear information hierarchy.
+- **Start Button:** Initiate the game with a "Start Game" button.
+- **User Input Field:** Allow users to type their answers.
+- **Submit Button:** Trigger the evaluation of user input.
+- **Correct/Wrong Display:** Visually indicate correct and incorrect answers.
+- **Play Again Button:** Provide an option to restart the game.
+- **Exit to Scoreboard Button:** Allow users to view their high scores.
 [Wireframe link](docs/wireframe.png)
 
 ### Surface:
-Visual aesthetics emphasize a clean and engaging design, integrating relevant imagery, clear typography, and intuitive iconography. The color scheme and layout aim to enhance readability and user engagement while maintaining a modern and welcoming appearance.
+- **Visual Design:** Use a visually appealing and intuitive design to enhance the overall user experience.
+- **Color Scheme:** Employ a color scheme that is both engaging and comfortable for extended usage.
+- **Responsive Design:** Ensure the game is accessible and functional across various devices.
+- **Audio Feedback:** Incorporate audio elements for the correct word and word pronunciation.
+- **Clear Typography:** Use clear and readable fonts for an optimal reading experience.
 [Visual ID](docs/wordstream-vi.png)
 
 ## Wireframe
