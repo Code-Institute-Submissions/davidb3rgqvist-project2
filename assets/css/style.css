@@ -38,7 +38,7 @@ i {
 .button:hover {
     background-color: #0b3d40;
     color: #f1f2f2;
-    border: 1px solid #E7EDEB;
+    border: 1px solid rgb(241, 236, 230);
 }
 
 /* Main page */
