@@ -3,6 +3,7 @@
 WordStream: French Edition is an engaging language learning game designed to help you master essential French vocabulary effortlessly. Immerse yourself in the game, learn the top 1000 words, and watch your language skills flow with ease.
 
 - [Deployed page](https://davidb3rgqvist.github.io/project2/)
+![Responsive test](docs/responsive-test.png)
 - [Responsive test](docs/responsive-test.png)
 
 
@@ -144,11 +145,11 @@ Feel free to explore the live version of the WordStream game.
 
 The development and creation of the WordStream website would not have been possible without the contributions, support, and resources from various individuals and organizations. We would like to extend our gratitude and credit to the following:
 
-### Open-Source Libraries and Tools
+### Open-Source Libraries
 
 - **Google Fonts:** Used for typography and font styles across the website.
 - **Font Awesome:** Provided icons used for navigation the play button, enhancing user experience.
-- **Code Institute:** Primary educational content encompassing comprehensive videos elucidating HTML, CSS and UX. 
+- **Code Institute:** Primary educational content encompassing comprehensive videos elucidating HTML, CSS, UX and JavaScript. Mainly from the "Love Math Walktrough Project". 
 
 ### External Resources
 
