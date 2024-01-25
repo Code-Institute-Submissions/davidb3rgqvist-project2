@@ -3,9 +3,8 @@
 WordStream: French Edition is an engaging language learning game designed to help you master essential French vocabulary effortlessly. Immerse yourself in the game, learn the top 1000 words, and watch your language skills flow with ease.
 
 - [Deployed page](https://davidb3rgqvist.github.io/project2/)
-![Responsive test](docs/responsive-test.png)
-- [Responsive test](docs/responsive-test.png)
 
+![Responsive test](docs/responsive-test.png)
 
 ## Table of Contents
   - [UX - Five Planes](#ux---five-planes)
@@ -40,7 +39,8 @@ WordStream is a language learning game designed to help users master the 1000 mo
 - **Feedback System:** Provide instant feedback on correct and incorrect answers, reinforcing learning.
 - **Replayability:** Allow users to play the game repeatedly to reinforce vocabulary and improve retention.
 - **Shuffling Words:** Implement a mechanism to shuffle words on page reload, providing a fresh learning experience.
-[Screen shots of the pages with comments](docs/comments.png)
+
+![Screen shots of the pages with comments](docs/responsive-test.png)
 
 ### Structure:
 
@@ -57,7 +57,8 @@ WordStream is a language learning game designed to help users master the 1000 mo
 - **Correct/Wrong Display:** Visually indicate correct and incorrect answers.
 - **Play Again Button:** Provide an option to restart the game.
 - **Exit to Scoreboard Button:** Allow users to view their high scores.
-[Wireframe link](docs/wireframe.png)
+
+![Wireframe link](docs/wireframe.png)
 
 ### Surface:
 - **Visual Design:** Use a visually appealing and intuitive design to enhance the overall user experience.
@@ -65,7 +66,8 @@ WordStream is a language learning game designed to help users master the 1000 mo
 - **Responsive Design:** Ensure the game is accessible and functional across various devices.
 - **Audio Feedback:** Incorporate audio elements for the correct word and word pronunciation.
 - **Clear Typography:** Use clear and readable fonts for an optimal reading experience.
-[Visual ID](docs/wordstream-vi.png)
+
+![Visual ID](docs/wordstream-vi.png)
 
 ## Future Features
 
