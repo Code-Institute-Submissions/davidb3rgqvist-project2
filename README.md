@@ -40,7 +40,7 @@ WordStream is a language learning game designed to help users master the 1000 mo
 - **Replayability:** Allow users to play the game repeatedly to reinforce vocabulary and improve retention.
 - **Shuffling Words:** Implement a mechanism to shuffle words on page reload, providing a fresh learning experience.
 
-![Screen shots of the pages with comments](comments.png)
+![Screen shots of the pages with comments](docs/comments.png)
 
 ### Structure:
 
