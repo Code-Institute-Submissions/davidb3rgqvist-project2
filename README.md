@@ -165,6 +165,5 @@ The development and creation of the WordStream website would not have been possi
 ### Inspirations and Mentors
 
 - **Brian O'Hare / Code Institute:** Provided guidance, mentorship, or inspiration during the project's development.
-- **Code Institute:** Parts of code taken from the "Love running project". Used for the header and the footer 
 
 We express our sincere appreciation to everyone who contributed directly or indirectly to WordStream project, helping shape and enhance this platform for users seeking to learn 1000 french words in a quick and fun way.
