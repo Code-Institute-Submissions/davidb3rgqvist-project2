@@ -1,14 +1,22 @@
 /* jshint esversion: 11 */
 
+/**
+  This script handles the logic for a French-English word matching game.
+  It includes functions for displaying game sections, handling user input,
+  and updating scores.
+*/
+
+// Variables for the listen to the correct answer button.
 let SpeechSynthesisUtterance;
 let speechSynthesis;
 
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
-    // Clear the the highscore
+
+    // Clear the the highscore.
     localStorage.clear();
 
-    // All const
+    // All constants.
     const userNameElement = document.getElementById("user-name");
     const userNameDisplayElement = document.getElementById("user-heading");
     const startButton = document.getElementById("start-game");
@@ -20,8 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const backToGameButton = document.getElementById("back-to-game");
     const speakButton = document.getElementById("speak-button");
     const correctAnswerCountElement = document.getElementById("correct-answer-count");
+
+    // First 50 words
     const words = [
-      // First 50 words
       {"fr": "comme", "en": "as"},
       {"fr": "je", "en": "I"},
       {"fr": "son", "en": "his"},
@@ -48,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {"fr": "est", "en": "is"},
       {"fr": "il", "en": "it"},
       {"fr": "vous", "en": "you"},
-      {"fr": "ou", "en": "or"},   
+      {"fr": "ou", "en": "or"},
       {"fr": "eu", "en": "had"},
       {"fr": "la", "en": "the"},
       {"fr": "de", "en": "of"},
@@ -72,30 +81,32 @@ document.addEventListener("DOMContentLoaded", function () {
       {"fr": "un", "en": "an"},
       {"fr": "chaque", "en": "each"},
       {"fr": "dire", "en": "tell"},
-      // Continue with more words...
-    ]; // Array with the game words
+    ];
+
+    // Array with the game words.
     const shuffledWords = shuffleWords([...words]);
 
-    // All variables
-    let displayHighScores;
+    // All variables.
+
     let currentWordIndex = 0;
     let totalCorrectAnswers = 0;
     let consecutiveCorrectAnswers = 0;
-    // Array with the high scores
+
+    // Array with the high scores.
     let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
-    // The declarations and initializations of SpeechSynthesisUtterance and speechSynthesis
+    // The declarations and initializations of SpeechSynthesisUtterance and speechSynthesis.
     SpeechSynthesisUtterance = window.SpeechSynthesisUtterance || window.webkitSpeechSynthesisUtterance;
     speechSynthesis = window.speechSynthesis || window.webkitSpeechSynthesis;
 
     // All event listeners:
 
-    // Add event listener listen to the correct word button
+    // Add event listener listen to the correct word button.
     speakButton.addEventListener("click", function () {
         speakWord(shuffledWords[currentWordIndex].fr);
     });
 
-    // Add event listener to the Start Game button, together with validation
+    // Add event listener to the Start Game button, together with validation.
     startButton.addEventListener("click", function () {
       const userNameValue = userNameElement.value;
       if (userNameValue !== "") {
@@ -103,12 +114,12 @@ document.addEventListener("DOMContentLoaded", function () {
         showGameSection();
         displayWord();
       } else {
-        // Alert the user when name field is empty
+        // Alert the user when name field is empty.
         alert("Please enter a valid username.");
       }
     });
 
-    // Add event listener to the username input field, together with validation
+    // Add event listener to the username input field, together with validation.
     document.getElementById("user-name").addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         const userNameValue = userNameElement.value.trim();
@@ -117,18 +128,18 @@ document.addEventListener("DOMContentLoaded", function () {
           showGameSection();
           displayWord();
         } else {
-        // Alert the user or handle the case where the username is empty
+          // Alert the user or handle the case where the username is empty.
           alert("Please enter a valid username.");
         }
       }
     });
 
-    // Add event listener for the "Submit" button
+    // Add event listener for the "Submit" button.
     document.getElementById("user-answer").addEventListener("click", function () {
           checkAnswer();
     });
 
-    // Add event listener for the "Text input"
+    // Add event listener for the "Text input".
     document.getElementById("input-word").addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         userInputElement.value = userInputElement.value.trim();
@@ -136,34 +147,38 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Add event listener for the "Play Again" button
+    // Add event listener for the "Play Again" button.
     document.getElementById("play-again").addEventListener("click", function () {
       resetGame();
       userInputElement.focus();
       showGameSection();
     });
 
-    // Add event listener for the "Highscore" button
+    // Add event listener for the "Highscore" button.
     exitGameButton.addEventListener("click", function () {
           showScoreSection();
           displayHighScores();
     });
 
-    // Add event listener for the "Back to game" button
+    // Add event listener for the "Back to game" button.
     backToGameButton.addEventListener("click", function () {
           showGameSection();
     });
 
-    //All Functions
+    // All Functions.
 
-    // Show intro-section and hide others
+    /**
+     * Show intro-section and hide others.
+     */
     function showIntroSection () {
       introSection.classList.remove("hide");
       gameSection.classList.add("hide");
       scoreSection.classList.add("hide");
     }
 
-    // Show game-section and hide others
+    /**
+     * Show game-section and hide others.
+     */
     function showGameSection () {
       introSection.classList.add("hide");
       gameSection.classList.remove("hide");
@@ -171,26 +186,35 @@ document.addEventListener("DOMContentLoaded", function () {
       userInputElement.focus();
     }
 
-    // Show score-section and hide others
+    /**
+     * Show score-section and hide others.
+     */ 
     function showScoreSection () {
       introSection.classList.add("hide");
       gameSection.classList.add("hide");
       scoreSection.classList.remove("hide");
     }
 
-    // Counts correct answers
+    /**
+     * Counts correct answers.
+     *
+     * @param {Number} count correct answer count.
+     */
     function updateCorrectAnswerCount (count) {
       correctAnswerCountElement.textContent = "Correct Answers: " + count;
     }
 
-    // Resets correct answers counter
+    /**
+     * Resets correct answers counter.
+     */ 
     function resetCorrectAnswerCount () {
       updateCorrectAnswerCount(0);
     }
 
     /**
-     * Makes it possible to here the correct word in french
-     * @param {*} word 
+     * Makes it possible to here the correct word in french.
+     *
+     * @param {String} word the word to speak.
      */
     function speakWord (word) {
       const utterance = new SpeechSynthesisUtterance(word);
@@ -200,8 +224,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Shuffles the word to have a new "first" word every time the webpage reloads.
-     * @param {*} words 
-     * @returns {words} A shuffled array
+     *
+     * @param {Array} words
+     * @returns {Array}  A shuffled array.
      */
     function shuffleWords (words) {
       for (let i = words.length - 1; i > 0; i--) {
@@ -211,7 +236,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return words;
     }
 
-    // Adds the game word to the flashcard
+    /**
+     * Adds the game word to the flashcard.
+     */ 
     function displayWord () {
       const flashcardElement = document.getElementById("flashcard");
       flashcardElement.textContent = shuffledWords[currentWordIndex].en;
@@ -222,7 +249,9 @@ document.addEventListener("DOMContentLoaded", function () {
       userInputElement.focus();
     }
 
-    // Reset the game
+    /**
+     * Reset the game.
+     */ 
     function resetGame () {
       currentWordIndex = 0;
       totalCorrectAnswers = 0;
@@ -239,7 +268,41 @@ document.addEventListener("DOMContentLoaded", function () {
       userInputElement.value = "";
     }
 
-    // Check if the user have inserted the correct word
+    /**
+     * Adds the score of each run, sorts them and adds it to local storage.
+     *
+     * @param {Number} score The score to be added to the high scores.
+     */
+    function updateHighScores(score) {
+      highScores.push(score);
+      highScores.sort((a, b) => b - a);
+      highScores = highScores.slice(0, 10);
+      localStorage.setItem("highScores", JSON.stringify(highScores));
+    }
+
+    /**
+     * Gets the score and sends it to the scoreboard.
+     */
+    function displayHighScores() {
+      const scoreSection = document.getElementById("results");
+      const highScoresList = document.createElement("ol");
+      highScoresList.id = "high-scores-list";
+      highScores.forEach((score, index) => {
+          const listItem = document.createElement("ol");
+          highScoresList.appendChild(listItem);
+          if (score !== undefined && score !== null) {
+              const listItem = document.createElement("ol");
+              listItem.textContent = `${score} words in a row`;
+              highScoresList.appendChild(listItem);
+          }
+      });
+      scoreSection.innerHTML = "<h1>Your top 10 High Scores</h1>";
+      scoreSection.appendChild(highScoresList);
+    }
+
+    /**
+     * Check if the user have inserted the correct word.
+     */ 
     function checkAnswer () {
       const userInputElement = document.getElementById("input-word");
       const flashcardElement = document.getElementById("flashcard");
@@ -255,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
         flashcardElement.style.backgroundColor = "green";
         setTimeout(() => {
         displayWord();
-        }, 150);
+        }, 500);
         userInputElement.value = "";
         wrongAnswerDiv.style.display = "none";
         submitButton.style.display = "block";
@@ -273,49 +336,15 @@ document.addEventListener("DOMContentLoaded", function () {
         submitButton.style.display = "none";
         playAgainButton.style.display = "block";
         playAgainButton.addEventListener("click", function() {
-        resetGame();
-    });
+          resetGame();
+        });
 
-        /**
-         * Adds the score of each run, sorts them and adds it to local storage.
-         * @param {*} score 
-         */
-        function updateHighScores(score) {
-          highScores.push(score);
-          highScores.sort((a, b) => b - a);
-          highScores = highScores.slice(0, 10);
-          localStorage.setItem("highScores", JSON.stringify(highScores));
-        }
-
-        // Gets the score and sends it to the scoreboard
-        function displayHighScores() {
-          const scoreSection = document.getElementById("results");
-          const highScoresList = document.createElement("ol");
-          highScoresList.id = "high-scores-list";
-          highScores.forEach((score, index) => {
-              const listItem = document.createElement("ol");
-              highScoresList.appendChild(listItem);
-              if (score !== undefined && score !== null) {
-                  const listItem = document.createElement("ol");
-                  listItem.textContent = `${score} words in a row`;
-                  highScoresList.appendChild(listItem);
-              }
-          });
-          scoreSection.innerHTML = "<h1>Your top 10 High Scores</h1>";
-          scoreSection.appendChild(highScoresList);
-        }
+        // Gets the score and sends it to the scoreboard.
         updateHighScores(totalCorrectAnswers);
-        displayHighScores();  
-        } 
+        displayHighScores();
+        }
     }
 
-    // Initial setup
+    // Initial setup.
     showIntroSection ();
 });
-
-// Brief overview or documentation:
-/* 
-  This script handles the logic for a French-English word matching game. 
-  It includes functions for displaying game sections, handling user input, 
-  and updating scores.
-*/

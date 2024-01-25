@@ -8,9 +8,8 @@ WordStream: French Edition is an engaging language learning game designed to hel
 
 ## Table of Contents
   - [UX - Five Planes](#ux---five-planes)
-  - [Wireframe](#wireframe)
-  - [Technology Used](#technology-used)
   - [Future Features](#future-features)
+  - [Technology Used](#technology-used)
   - [Testing](#testing)
   - [Development](#development)
   - [Deployment](#deployment)
@@ -67,19 +66,6 @@ WordStream is a language learning game designed to help users master the 1000 mo
 - **Clear Typography:** Use clear and readable fonts for an optimal reading experience.
 [Visual ID](docs/wordstream-vi.png)
 
-## Wireframe
-
-[Wireframe link](docs/wireframe.png)
-
-## Technology Used
-
-- Front-end: HTML, CSS, JavaScript
-- Figma for wireframes
-- ChatGPT - for AI assistance
-- Adobe Photoshop for image editing
-- Adobe express for image content
-- Adobe Illustrator for graphic content
-
 ## Future Features
 
 We plan to enhance the website with the following features:
@@ -89,12 +75,25 @@ We plan to enhance the website with the following features:
 - Top ten user highscore.
 - 3d effect when flipping the flashcards.
 
+## Technology Used
+
+- Front-end: HTML, CSS, JavaScript
+- Figma for wireframes
+- ChatGPT - for AI assistance
+- Adobe Photoshop for image editing
+- Adobe express for image content
+- Adobe Illustrator for graphic content
+- www.w3.org: Utilized to perform validation test of HTML and CSS.
+- https://jshint.com/: Utilized to perform validation test of JavaScript.
+- https://ui.dev/amiresponsive: Utilized for a quick overview of the responsivness.
+
 ## Testing
 
 Testing was an integral part of the website development process. We performed comprehensive tests across various devices and screen sizes to ensure a seamless user experience. This included functional testing to verify proper functionality of all features, as well as responsive testing to guarantee optimal display on different devices. Additionally we performed serval validation tests.
 
 - [HTML Validation of index.html, no errors found](docs/index-validation.png)
 - [CSS Validation of style.css, no errors found](docs/css-validation.png)
+- [JavaScript Validation, no errors found](docs/javascript-validation.png)
 - [Lighthouse report](docs/lighthouse-report.png)
 - [Responsiveness overview](docs/responsive-test.png)
 
@@ -149,13 +148,7 @@ The development and creation of the WordStream website would not have been possi
 
 - **Google Fonts:** Used for typography and font styles across the website.
 - **Font Awesome:** Provided icons used for navigation the play button, enhancing user experience.
-- **ChatGPT by OpenAI:** Utilized for AI assistance and content suggestions.
-- **Figma:** Used for creating wireframes, aiding in the design process.
-- **Adobe Photoshop, Illustrator & Express:** Used for image editing and graphic elements.
-- **Code Institute:** Primary educational content encompassing comprehensive videos elucidating HTML, CSS and UX.
-- **www.w3.org:** Utilized to perform validation test of HTML and CSS.
-- **https://ui.dev/amiresponsive:** Utilized for a quick overview of the responsivness.
-
+- **Code Institute:** Primary educational content encompassing comprehensive videos elucidating HTML, CSS and UX. 
 
 ### External Resources
 
